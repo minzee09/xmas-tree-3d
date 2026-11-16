@@ -1,0 +1,8 @@
+// Static site only: everything is served from dist/lite (run `npm run build` first).
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "xmas-tree-lite",
+  "compatibility_date": "2025-09-01",
+  "workers_dev": true,
+  "assets": { "directory": "../dist/lite" }
+}

@@ -1,0 +1,17 @@
+// Static site from dist/guestbook + a Worker that serves /api/* from a D1 database.
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "xmas-tree",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "workers_dev": true,
+  "assets": { "directory": "../dist/guestbook", "binding": "ASSETS" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "xmas-guestbook",
+      // Replace with your own: `npx wrangler d1 create xmas-guestbook`
+      "database_id": "1f423d89-a4d2-4234-8025-25316d0c412b"
+    }
+  ]
+}

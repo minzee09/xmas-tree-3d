@@ -1,0 +1,24 @@
+{
+  "name": "xmas-tree-3d",
+  "version": "1.0.0",
+  "private": true,
+  "description": "3D Christmas tree with three.js, deployed on Cloudflare Workers (lite + guestbook)",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev:lite": "node scripts/build.mjs lite && wrangler dev -c lite/wrangler.jsonc",
+    "dev:guestbook": "node scripts/build.mjs guestbook && wrangler dev -c guestbook/wrangler.jsonc",
+    "watch": "node scripts/build.mjs --watch",
+    "deploy:lite": "node scripts/build.mjs lite && wrangler deploy -c lite/wrangler.jsonc",
+    "deploy:guestbook": "node scripts/build.mjs guestbook && wrangler deploy -c guestbook/wrangler.jsonc",
+    "db:init": "wrangler d1 execute xmas-guestbook --remote --file guestbook/schema.sql -c guestbook/wrangler.jsonc",
+    "db:init:local": "wrangler d1 execute xmas-guestbook --local --file guestbook/schema.sql -c guestbook/wrangler.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "^4.162.0"
+  },
+  "allowScripts": {
+    "workerd@1.20261113.1": true,
+    "esbuild@0.28.2": true
+  }
+}

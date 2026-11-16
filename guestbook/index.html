@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>우리들의 트리</title>
+  <link rel="stylesheet" href="shared/css/base.css">
+  <link rel="stylesheet" href="guestbook.css">
+</head>
+<body>
+  <canvas id="scene" aria-label="회전하는 3D 크리스마스 트리. 방명록 하나가 오너먼트 하나로 달립니다."></canvas>
+
+  <div class="ui">
+    <div class="top" id="top">
+      <p class="help">드래그해서 회전 · 스크롤(핀치)로 확대 · 빈 곳을 누르면 불꽃</p>
+    </div>
+
+    <aside class="book" id="book" aria-label="방명록">
+      <button class="book-head" type="button" id="bookHead" aria-expanded="false" aria-controls="bookBody">
+        <h2>방명록<span class="sheet-caret" aria-hidden="true">▲</span></h2>
+        <span class="count" id="count"></span>
+      </button>
+      <div class="book-body" id="bookBody">
+        <form id="form" autocomplete="off">
+          <div class="field">
+            <label class="lbl" for="nameInput">이름</label>
+            <input type="text" id="nameInput" maxlength="16" required>
+          </div>
+          <div class="field">
+            <label class="lbl" for="msgInput">메시지</label>
+            <textarea id="msgInput" maxlength="80" rows="2" required></textarea>
+          </div>
+          <div class="row">
+            <fieldset class="swatches" id="swatches"><legend>색</legend></fieldset>
+            <span class="chars" id="chars">0 / 80</span>
+          </div>
+          <button class="submit" type="submit" id="submitBtn">남기기</button>
+          <div class="status" id="status" role="status" aria-live="polite"></div>
+        </form>
+        <ul class="list" id="list"></ul>
+      </div>
+    </aside>
+  </div>
+
+  <div class="card" id="card" hidden>
+    <button class="c-close" type="button" id="cardClose" aria-label="닫기">×</button>
+    <div class="c-msg" id="cardMsg"></div>
+    <div class="c-foot"><span id="cardWho"></span><span id="cardWhen"></span></div>
+  </div>
+
+  <!-- three.js r147 UMD build (defines window.THREE) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/shaders/CopyShader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/EffectComposer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/RenderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/ShaderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
